@@ -201,18 +201,12 @@ boundary_point_heel = boundary_point[
 ]
 
 print(boundary_point_heel)
-d_min = float('inf')
+distances = np.sum(
+    (boundary_point_heel - i_point)**2,
+    axis=1
+)
 
-for i in boundary_point_heel:
-    x = (i[0] - i_point[0])**2
-    y = (i[1] - i_point[1])**2
-    d = x + y
-    print(d)
-    if d < d_min:
-        d_min = min(d, d_min)
-        coor = i
-
-
+coor = boundary_point_heel[np.argmin(distances)]
 print(coor)
 print(i_point)
 
